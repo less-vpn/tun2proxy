@@ -57,7 +57,10 @@ pub unsafe extern "C" fn tun2proxy_with_name_run(
     args.setup(_root_privilege);
 
     if let Ok(bypass) = std::ffi::CStr::from_ptr(bypass).to_str() {
-        args.bypass(bypass.parse().unwrap());
+        let parts = bypass.split(",");
+        for part in parts {
+            args.bypass(part.parse().unwrap());
+        }
     }
 
     let main_loop = async move {
