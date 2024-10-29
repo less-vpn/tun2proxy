@@ -1,3 +1,4 @@
+#![windows_subsystem = "windows"]
 #[cfg(feature = "udpgw")]
 use crate::udpgw::UdpGwClient;
 use crate::{
